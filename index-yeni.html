@@ -1,0 +1,1360 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RC ENDÜSTRİ - UNISIGN UNIPORT 6000 CNC Vardiya Planı</title>
+  <style>
+    :root {
+      --lacivert: #0b2545;
+      --mavi: #1d6fd8;
+      --mavi-koyu: #174f98;
+      --beyaz: #ffffff;
+      --acik-gri: #f3f6fa;
+      --cizgi: #d7e0ec;
+      --metin: #172235;
+      --soluk-metin: #596a80;
+      --basari: #147a46;
+      --uyari: #a15c00;
+      --hata: #b3261e;
+      --golge: 0 14px 34px rgba(11, 37, 69, 0.12);
+      --radius: 8px;
+    }
+
+    * {
+      box-sizing: border-box;
+      letter-spacing: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: var(--acik-gri);
+      color: var(--metin);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.5;
+    }
+
+    button,
+    input,
+    textarea {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    .app-shell {
+      width: min(1440px, calc(100% - 28px));
+      margin: 0 auto;
+      padding: 24px 0 40px;
+    }
+
+    .topbar {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 18px;
+      align-items: center;
+      margin-bottom: 18px;
+      padding: 20px;
+      border: 1px solid var(--cizgi);
+      border-radius: var(--radius);
+      background: var(--beyaz);
+      box-shadow: var(--golge);
+    }
+
+    .brand-wrap {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      min-width: 0;
+    }
+
+    .machine-mark {
+      width: 92px;
+      height: 64px;
+      flex: 0 0 auto;
+      border: 1px solid var(--cizgi);
+      border-radius: var(--radius);
+      background: #eef4fb;
+      object-fit: contain;
+      padding: 6px;
+    }
+
+    .eyebrow {
+      margin: 0 0 4px;
+      color: var(--mavi-koyu);
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    h1,
+    h2,
+    h3 {
+      margin: 0;
+      color: var(--lacivert);
+      line-height: 1.16;
+    }
+
+    h1 {
+      font-size: 1.7rem;
+    }
+
+    h2 {
+      font-size: 1.2rem;
+    }
+
+    h3 {
+      font-size: 1rem;
+    }
+
+    .date-range {
+      margin: 8px 0 0;
+      color: var(--soluk-metin);
+      font-weight: 700;
+    }
+
+    .status-card {
+      min-width: 240px;
+      padding: 14px;
+      border: 1px solid var(--cizgi);
+      border-radius: var(--radius);
+      background: #f8fbff;
+    }
+
+    .status-card span {
+      display: block;
+      color: var(--soluk-metin);
+      font-size: 0.84rem;
+      font-weight: 700;
+    }
+
+    .status-card strong {
+      display: block;
+      margin-top: 3px;
+      color: var(--lacivert);
+      font-size: 1.05rem;
+    }
+
+    .status-card p {
+      margin: 4px 0 0;
+      color: var(--soluk-metin);
+      font-size: 0.88rem;
+    }
+
+    .dashboard {
+      display: grid;
+      grid-template-columns: 1.08fr 0.92fr;
+      gap: 18px;
+      align-items: start;
+    }
+
+    .card {
+      border: 1px solid var(--cizgi);
+      border-radius: var(--radius);
+      background: var(--beyaz);
+      box-shadow: var(--golge);
+    }
+
+    .section-heading {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: flex-start;
+      margin-bottom: 14px;
+    }
+
+    .section-heading p {
+      margin: 5px 0 0;
+      color: var(--soluk-metin);
+    }
+
+    .controls-card,
+    .people-card,
+    .shift-board,
+    .planner-card {
+      padding: 18px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .field {
+      display: grid;
+      gap: 7px;
+    }
+
+    .field--wide {
+      grid-column: 1 / -1;
+    }
+
+    .field span,
+    .input-title {
+      color: var(--lacivert);
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      border: 1px solid #bfd0e4;
+      border-radius: var(--radius);
+      background: #fbfdff;
+      color: var(--metin);
+      outline: none;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    }
+
+    input {
+      min-height: 42px;
+      padding: 9px 10px;
+    }
+
+    textarea {
+      min-height: 96px;
+      resize: vertical;
+      padding: 10px;
+    }
+
+    input:focus,
+    textarea:focus {
+      border-color: var(--mavi);
+      background: var(--beyaz);
+      box-shadow: 0 0 0 3px rgba(29, 111, 216, 0.14);
+    }
+
+    .people-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .person-chip {
+      border: 1px solid #b7c9df;
+      border-radius: var(--radius);
+      background: #f7fbff;
+      color: var(--lacivert);
+      padding: 8px 10px;
+      font-weight: 700;
+    }
+
+    .person-chip:hover,
+    .person-chip:focus-visible {
+      border-color: var(--mavi);
+      color: var(--mavi-koyu);
+    }
+
+    .active-shift-note {
+      margin: 12px 0 0;
+      color: var(--soluk-metin);
+      font-size: 0.9rem;
+    }
+
+    .shift-board {
+      margin-top: 18px;
+    }
+
+    .shift-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .shift-card {
+      display: grid;
+      gap: 12px;
+      align-content: start;
+      min-width: 0;
+      border: 1px solid var(--cizgi);
+      border-radius: var(--radius);
+      background: #fbfdff;
+      padding: 14px;
+    }
+
+    .shift-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: flex-start;
+      min-height: 54px;
+    }
+
+    .shift-time {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 104px;
+      min-height: 34px;
+      border-radius: var(--radius);
+      background: var(--lacivert);
+      color: var(--beyaz);
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .breaks {
+      margin: 0;
+      color: var(--soluk-metin);
+      font-size: 0.9rem;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 18px 0;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      border: 1px solid transparent;
+      border-radius: var(--radius);
+      padding: 10px 14px;
+      font-weight: 800;
+      text-decoration: none;
+      transition: transform 0.16s ease, box-shadow 0.16s ease, background 0.16s ease;
+    }
+
+    .button:hover,
+    .button:focus-visible {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 18px rgba(11, 37, 69, 0.14);
+    }
+
+    .button--primary {
+      background: var(--mavi);
+      color: var(--beyaz);
+    }
+
+    .button--dark {
+      background: var(--lacivert);
+      color: var(--beyaz);
+    }
+
+    .button--light {
+      border-color: #b8c9de;
+      background: var(--beyaz);
+      color: var(--lacivert);
+    }
+
+    .button--danger {
+      border-color: #f0b6b2;
+      background: #fff7f6;
+      color: var(--hata);
+    }
+
+    .planner-card {
+      margin-top: 18px;
+    }
+
+    .planner-tools {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 8px;
+      color: var(--soluk-metin);
+      font-weight: 700;
+      text-align: right;
+    }
+
+    .note-preview {
+      display: none;
+      margin: 0 0 14px;
+      border-left: 4px solid var(--mavi);
+      border-radius: var(--radius);
+      background: #f6faff;
+      padding: 12px;
+      color: var(--metin);
+    }
+
+    .note-preview strong {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--lacivert);
+    }
+
+    .warning {
+      margin: 0 0 14px;
+      border: 1px solid #f2c078;
+      border-radius: var(--radius);
+      background: #fff8ec;
+      color: var(--uyari);
+      padding: 12px;
+      font-weight: 700;
+    }
+
+    .plan-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .day-card {
+      overflow: hidden;
+      border: 1px solid var(--cizgi);
+      border-radius: var(--radius);
+      background: var(--beyaz);
+    }
+
+    .day-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: center;
+      background: #eef5fd;
+      border-bottom: 1px solid var(--cizgi);
+      padding: 12px 14px;
+    }
+
+    .day-head strong {
+      display: block;
+      color: var(--lacivert);
+      font-size: 1.05rem;
+    }
+
+    .day-head span {
+      color: var(--soluk-metin);
+      font-weight: 700;
+    }
+
+    .day-number {
+      flex: 0 0 auto;
+      border: 1px solid #b7cbe2;
+      border-radius: var(--radius);
+      background: var(--beyaz);
+      color: var(--mavi-koyu);
+      padding: 7px 9px;
+      font-weight: 800;
+    }
+
+    .day-shifts {
+      display: grid;
+    }
+
+    .plan-row {
+      display: grid;
+      grid-template-columns: 126px minmax(130px, 0.78fr) minmax(220px, 1.25fr) minmax(220px, 1fr);
+      gap: 12px;
+      align-items: start;
+      min-height: 74px;
+      padding: 12px 14px;
+      border-top: 1px solid #edf1f6;
+    }
+
+    .plan-row:first-child {
+      border-top: 0;
+    }
+
+    .plan-time {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 36px;
+      border-radius: var(--radius);
+      background: var(--lacivert);
+      color: var(--beyaz);
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .plan-cell strong {
+      display: block;
+      margin-bottom: 3px;
+      color: var(--lacivert);
+      font-size: 0.84rem;
+    }
+
+    .plan-cell p {
+      margin: 0;
+      color: var(--metin);
+      overflow-wrap: anywhere;
+    }
+
+    .muted {
+      color: var(--soluk-metin);
+    }
+
+    .toast {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 10;
+      width: min(420px, calc(100% - 36px));
+      border: 1px solid #b8d8c5;
+      border-radius: var(--radius);
+      background: #f3fff7;
+      color: var(--basari);
+      padding: 12px 14px;
+      box-shadow: var(--golge);
+      font-weight: 800;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(10px);
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+
+    .toast.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .site-footer {
+      margin-top: 18px;
+      color: var(--soluk-metin);
+      text-align: center;
+      font-size: 0.88rem;
+    }
+
+    @media (max-width: 1040px) {
+      .dashboard,
+      .shift-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .topbar {
+        grid-template-columns: 1fr;
+      }
+
+      .status-card {
+        min-width: 0;
+      }
+
+      .plan-row {
+        grid-template-columns: 112px 1fr;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .app-shell {
+        width: min(100% - 18px, 1440px);
+        padding-top: 10px;
+      }
+
+      .topbar,
+      .controls-card,
+      .people-card,
+      .shift-board,
+      .planner-card {
+        padding: 14px;
+      }
+
+      .brand-wrap {
+        align-items: flex-start;
+      }
+
+      .machine-mark {
+        width: 72px;
+        height: 54px;
+      }
+
+      h1 {
+        font-size: 1.22rem;
+      }
+
+      h2 {
+        font-size: 1.05rem;
+      }
+
+      .form-grid,
+      .plan-row {
+        grid-template-columns: 1fr;
+      }
+
+      .actions {
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+
+      .button {
+        width: 100%;
+      }
+
+      .day-head,
+      .shift-header,
+      .section-heading {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media print {
+      @page {
+        size: A4;
+        margin: 10mm;
+      }
+
+      :root {
+        --golge: none;
+      }
+
+      body {
+        background: #ffffff;
+        color: #000000;
+        font-size: 10.5pt;
+      }
+
+      .app-shell {
+        width: 100%;
+        padding: 0;
+      }
+
+      .no-print,
+      .actions,
+      .site-footer,
+      .toast {
+        display: none !important;
+      }
+
+      .topbar,
+      .planner-card {
+        border: 0;
+        box-shadow: none;
+        padding: 0;
+      }
+
+      .topbar {
+        grid-template-columns: 1fr;
+        margin-bottom: 7mm;
+        border-bottom: 2px solid #0b2545;
+        padding-bottom: 4mm;
+      }
+
+      .machine-mark {
+        width: 70px;
+        height: 48px;
+        padding: 2px;
+      }
+
+      h1 {
+        font-size: 16pt;
+      }
+
+      h2 {
+        font-size: 13pt;
+      }
+
+      .status-card {
+        border: 0;
+        background: #ffffff;
+        padding: 0;
+      }
+
+      .planner-card {
+        margin: 0;
+      }
+
+      .section-heading {
+        margin-bottom: 4mm;
+      }
+
+      .planner-tools {
+        justify-content: flex-start;
+        text-align: left;
+      }
+
+      .note-preview {
+        display: block;
+        border: 1px solid #9db7d4;
+        border-left: 4px solid #1d6fd8;
+        background: #ffffff;
+        break-inside: avoid;
+      }
+
+      .plan-list {
+        display: block;
+      }
+
+      .day-card {
+        margin-bottom: 5mm;
+        border: 1px solid #6e7d8f;
+        box-shadow: none;
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+
+      .day-head {
+        background: #e9eef5 !important;
+        color: #000000;
+        padding: 7px 9px;
+      }
+
+      .day-number {
+        border-color: #6e7d8f;
+      }
+
+      .plan-row {
+        grid-template-columns: 28mm 31mm 1fr 48mm;
+        min-height: 0;
+        gap: 7px;
+        padding: 7px 9px;
+        border-top: 1px solid #c5ced8;
+      }
+
+      .plan-time {
+        min-height: 28px;
+        background: #0b2545 !important;
+        color: #ffffff !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      .plan-cell strong {
+        font-size: 9pt;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand-wrap">
+        <img
+          class="machine-mark"
+          alt="UNIPORT CNC portal çizimi"
+          src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 120'%3E%3Crect width='180' height='120' rx='12' fill='%23eef4fb'/%3E%3Cpath d='M28 86h124v12H28z' fill='%230b2545'/%3E%3Cpath d='M40 26h100v13H40zM45 39h16v47H45zM119 39h16v47h-16z' fill='%231d6fd8'/%3E%3Cpath d='M72 45h37v11H72zM84 56h13v24H84z' fill='%230b2545'/%3E%3Ccircle cx='56' cy='93' r='7' fill='%23ffffff'/%3E%3Ccircle cx='124' cy='93' r='7' fill='%23ffffff'/%3E%3C/svg%3E"
+        >
+        <div>
+          <p class="eyebrow">Vardiya planlama</p>
+          <h1>RC ENDÜSTRİ - UNISIGN UNIPORT 6000 CNC</h1>
+          <p class="date-range" id="dateRangeText">Tarih aralığı hazırlanıyor...</p>
+        </div>
+      </div>
+
+      <div class="status-card" aria-live="polite">
+        <span>Plan durumu</span>
+        <strong id="planSummary">Hazır</strong>
+        <p id="saveStatus">Son kayıt bilgisi bekleniyor.</p>
+      </div>
+    </header>
+
+    <main>
+      <div class="dashboard no-print">
+        <section class="card controls-card" aria-labelledby="controlsTitle">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Plan bilgileri</p>
+              <h2 id="controlsTitle">Tarih ve notlar</h2>
+              <p>Haftalık CNC portal hattı planını buradan hazırlayın.</p>
+            </div>
+          </div>
+
+          <div class="form-grid">
+            <label class="field" for="startDate">
+              <span>Başlangıç tarihi</span>
+              <input id="startDate" type="date">
+            </label>
+            <label class="field" for="endDate">
+              <span>Bitiş tarihi</span>
+              <input id="endDate" type="date">
+            </label>
+            <label class="field field--wide" for="planNotes">
+              <span>Not alanı</span>
+              <textarea id="planNotes" placeholder="Bakım, izin, fazla mesai veya üretim notlarını yazın."></textarea>
+            </label>
+          </div>
+        </section>
+
+        <section class="card people-card" aria-labelledby="peopleTitle">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Hazır liste</p>
+              <h2 id="peopleTitle">Personel listesi</h2>
+              <p>Bir vardiya personel kutusuna tıklayın, sonra isim seçin.</p>
+            </div>
+          </div>
+
+          <div class="people-list" id="peopleList"></div>
+          <p class="active-shift-note" id="activeShiftText">Seçili vardiya: 00:00-08:00</p>
+        </section>
+      </div>
+
+      <section class="card shift-board no-print" aria-labelledby="shiftInputsTitle">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Güncel ekipler</p>
+            <h2 id="shiftInputsTitle">Vardiya personeli ve sorumluları</h2>
+            <p>İsimleri satır satır veya virgülle ayırarak yazabilirsiniz.</p>
+          </div>
+        </div>
+
+        <div class="shift-grid" id="shiftInputs"></div>
+      </section>
+
+      <div class="actions no-print" aria-label="Plan işlemleri">
+        <button class="button button--primary" id="rotateButton" type="button">Takla Attır</button>
+        <button class="button button--dark" id="saveButton" type="button">Kaydet</button>
+        <button class="button button--light" id="loadButton" type="button">Yükle</button>
+        <button class="button button--light" id="printButton" type="button">Yazdır</button>
+        <button class="button button--light" id="downloadButton" type="button">HTML İndir</button>
+        <button class="button button--danger" id="resetButton" type="button">Sıfırla</button>
+      </div>
+
+      <section class="card planner-card" aria-labelledby="plannerTitle">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Gün gün plan</p>
+            <h2 id="plannerTitle">Vardiya çizelgesi</h2>
+            <p>Seçilen tarih aralığındaki her gün ve her vardiya aşağıda listelenir.</p>
+          </div>
+          <div class="planner-tools" id="plannerStats">0 gün</div>
+        </div>
+
+        <div class="note-preview" id="notesPreview"></div>
+        <div id="warningArea"></div>
+        <div class="plan-list" id="planList"></div>
+      </section>
+    </main>
+
+    <footer class="site-footer no-print">
+      RC ENDÜSTRİ vardiya planı yerel olarak bu tarayıcıda saklanır.
+    </footer>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <datalist id="personnelDatalist"></datalist>
+
+  <script id="exportDataScript">
+    window.__RC_SHIFT_EXPORT__ = null;
+  </script>
+
+  <script>
+    const KAYIT_ANAHTARI = "rcEndustriUnisignUniport6000VardiyaPlani";
+
+    const personelListesi = [
+      "Gökhan Üresin",
+      "İsmail Benli",
+      "Hakan Odabaş",
+      "Murat Silahcı",
+      "Yalçın Durmuşoğlu",
+      "Sinan Yüksel",
+      "İsmail Dönmez",
+      "Güvenç Bölükbaşı",
+      "Cumali Delimehmet"
+    ];
+
+    const vardiyalar = [
+      {
+        id: "gece",
+        ad: "Gece Vardiyası",
+        saat: "00:00-08:00",
+        mola: "02:00-02:10 / 04:00-04:30 / 06:00-06:10"
+      },
+      {
+        id: "gunduz",
+        ad: "Gündüz Vardiyası",
+        saat: "08:00-16:00",
+        mola: "10:00-10:10 / 12:40-13:10 / 15:00-15:10"
+      },
+      {
+        id: "aksam",
+        ad: "Akşam Vardiyası",
+        saat: "16:00-24:00",
+        mola: "18:00-18:10 / 20:00-20:30 / 22:00-22:10"
+      }
+    ];
+
+    const elemanlar = {};
+    let aktifVardiyaId = "gece";
+    let otomatikKayitZamani;
+    let toastZamani;
+
+    function bugununIsoTarihi() {
+      const bugun = new Date();
+      bugun.setHours(0, 0, 0, 0);
+      return tarihiIsoYap(bugun);
+    }
+
+    function tarihiIsoYap(tarih) {
+      const yil = tarih.getFullYear();
+      const ay = String(tarih.getMonth() + 1).padStart(2, "0");
+      const gun = String(tarih.getDate()).padStart(2, "0");
+      return `${yil}-${ay}-${gun}`;
+    }
+
+    function isoTarihiOku(iso) {
+      if (!iso) return null;
+      const parcalar = iso.split("-").map(Number);
+      if (parcalar.length !== 3 || parcalar.some(Number.isNaN)) return null;
+      return new Date(parcalar[0], parcalar[1] - 1, parcalar[2]);
+    }
+
+    function tarihEkle(iso, gunSayisi) {
+      const tarih = isoTarihiOku(iso);
+      tarih.setDate(tarih.getDate() + gunSayisi);
+      return tarihiIsoYap(tarih);
+    }
+
+    function ornekVeriOlustur() {
+      const baslangic = bugununIsoTarihi();
+      return {
+        startDate: baslangic,
+        endDate: tarihEkle(baslangic, 6),
+        notes: "UNISIGN UNIPORT 6000 CNC hattı için haftalık vardiya planı.",
+        shifts: {
+          gece: {
+            staff: "Güvenç Bölükbaşı\nİsmail Benli\nİsmail Dönmez",
+            lead: "Güvenç Bölükbaşı"
+          },
+          gunduz: {
+            staff: "Gökhan Üresin\nMurat Silahcı\nHakan Odabaş",
+            lead: "Gökhan Üresin"
+          },
+          aksam: {
+            staff: "Yalçın Durmuşoğlu\nSinan Yüksel\nCumali Delimehmet",
+            lead: "Yalçın Durmuşoğlu"
+          }
+        }
+      };
+    }
+
+    function guvenliMetin(metin) {
+      return String(metin ?? "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+
+    function personelMetniniListeyeCevir(metin) {
+      return String(metin || "")
+        .split(/[\n,]+/)
+        .map((isim) => isim.trim())
+        .filter(Boolean);
+    }
+
+    function listeyiGorunenMetneCevir(liste) {
+      if (!liste.length) return '<span class="muted">Personel girilmedi</span>';
+      return liste.map(guvenliMetin).join("<br>");
+    }
+
+    function tarihYaz(tarih, secenekler) {
+      return new Intl.DateTimeFormat("tr-TR", secenekler).format(tarih);
+    }
+
+    function tarihAraligiOlustur(baslangicIso, bitisIso) {
+      const baslangic = isoTarihiOku(baslangicIso);
+      const bitis = isoTarihiOku(bitisIso);
+      if (!baslangic || !bitis || bitis < baslangic) return [];
+
+      const gunler = [];
+      const yuruyen = new Date(baslangic);
+      while (yuruyen <= bitis) {
+        gunler.push(new Date(yuruyen));
+        yuruyen.setDate(yuruyen.getDate() + 1);
+      }
+      return gunler;
+    }
+
+    function elemanlariHazirla() {
+      [
+        "startDate",
+        "endDate",
+        "planNotes",
+        "peopleList",
+        "activeShiftText",
+        "shiftInputs",
+        "rotateButton",
+        "saveButton",
+        "loadButton",
+        "printButton",
+        "downloadButton",
+        "resetButton",
+        "dateRangeText",
+        "planSummary",
+        "saveStatus",
+        "plannerStats",
+        "notesPreview",
+        "warningArea",
+        "planList",
+        "personnelDatalist",
+        "toast"
+      ].forEach((id) => {
+        elemanlar[id] = document.getElementById(id);
+      });
+    }
+
+    function arayuzuKur() {
+      elemanlar.personnelDatalist.innerHTML = personelListesi
+        .map((isim) => `<option value="${guvenliMetin(isim)}"></option>`)
+        .join("");
+
+      elemanlar.peopleList.innerHTML = personelListesi
+        .map((isim) => {
+          return `<button class="person-chip" type="button" data-name="${guvenliMetin(isim)}">${guvenliMetin(isim)}</button>`;
+        })
+        .join("");
+
+      elemanlar.shiftInputs.innerHTML = vardiyalar
+        .map((vardiya) => {
+          return `
+            <article class="shift-card" data-shift-card="${vardiya.id}">
+              <div class="shift-header">
+                <div>
+                  <p class="eyebrow">${guvenliMetin(vardiya.ad)}</p>
+                  <h3>${guvenliMetin(vardiya.saat)}</h3>
+                </div>
+                <span class="shift-time">${guvenliMetin(vardiya.saat)}</span>
+              </div>
+              <label class="field" for="staff-${vardiya.id}">
+                <span>Personel isimleri</span>
+                <textarea id="staff-${vardiya.id}" data-staff="${vardiya.id}" placeholder="İsimleri satır satır yazın"></textarea>
+              </label>
+              <label class="field" for="lead-${vardiya.id}">
+                <span>Vardiya sorumlusu</span>
+                <input id="lead-${vardiya.id}" data-lead="${vardiya.id}" list="personnelDatalist" placeholder="Sorumlu seçin veya yazın">
+              </label>
+              <p class="breaks"><strong>Molalar:</strong> ${guvenliMetin(vardiya.mola)}</p>
+            </article>
+          `;
+        })
+        .join("");
+    }
+
+    function formVerisiniOku() {
+      const veri = {
+        startDate: elemanlar.startDate.value,
+        endDate: elemanlar.endDate.value,
+        notes: elemanlar.planNotes.value,
+        shifts: {}
+      };
+
+      vardiyalar.forEach((vardiya) => {
+        veri.shifts[vardiya.id] = {
+          staff: document.getElementById(`staff-${vardiya.id}`).value,
+          lead: document.getElementById(`lead-${vardiya.id}`).value
+        };
+      });
+
+      return veri;
+    }
+
+    function formVerisiniYaz(veri) {
+      const temizVeri = veri || ornekVeriOlustur();
+      elemanlar.startDate.value = temizVeri.startDate || bugununIsoTarihi();
+      elemanlar.endDate.value = temizVeri.endDate || tarihEkle(elemanlar.startDate.value, 6);
+      elemanlar.planNotes.value = temizVeri.notes || "";
+
+      vardiyalar.forEach((vardiya) => {
+        const vardiyaVerisi = temizVeri.shifts?.[vardiya.id] || {};
+        document.getElementById(`staff-${vardiya.id}`).value = vardiyaVerisi.staff || "";
+        document.getElementById(`lead-${vardiya.id}`).value = vardiyaVerisi.lead || "";
+      });
+
+      planiGuncelle();
+    }
+
+    function kayitOku() {
+      try {
+        const hamKayit = localStorage.getItem(KAYIT_ANAHTARI);
+        if (!hamKayit) return null;
+        return JSON.parse(hamKayit);
+      } catch (hata) {
+        console.warn("Kayıt okunamadı:", hata);
+        return null;
+      }
+    }
+
+    function kaydet(sessiz = false) {
+      const veri = formVerisiniOku();
+      veri.savedAt = new Date().toISOString();
+
+      try {
+        localStorage.setItem(KAYIT_ANAHTARI, JSON.stringify(veri));
+        kayitDurumunuYaz(veri.savedAt);
+        if (!sessiz) bildirimGoster("Plan yerel kayda alındı.");
+        return true;
+      } catch (hata) {
+        console.warn("Kayıt yapılamadı:", hata);
+        bildirimGoster("Tarayıcı kaydı yapılamadı. Depolama iznini kontrol edin.", true);
+        return false;
+      }
+    }
+
+    function otomatikKaydet() {
+      clearTimeout(otomatikKayitZamani);
+      otomatikKayitZamani = setTimeout(() => kaydet(true), 450);
+    }
+
+    function kayitDurumunuYaz(savedAt) {
+      if (!savedAt) {
+        elemanlar.saveStatus.textContent = "Henüz kaydedilmiş değişiklik yok.";
+        return;
+      }
+
+      const tarih = new Date(savedAt);
+      elemanlar.saveStatus.textContent = `Son kayıt: ${tarihYaz(tarih, {
+        day: "2-digit",
+        month: "2-digit",
+        year: "numeric",
+        hour: "2-digit",
+        minute: "2-digit"
+      })}`;
+    }
+
+    function kaydiYukle() {
+      const kayit = kayitOku();
+      if (!kayit) {
+        bildirimGoster("Yüklenecek kayıt bulunamadı.", true);
+        return;
+      }
+
+      formVerisiniYaz(kayit);
+      kayitDurumunuYaz(kayit.savedAt);
+      bildirimGoster("Son kaydedilen plan yüklendi.");
+    }
+
+    function taklaAttir() {
+      const onceki = formVerisiniOku();
+
+      // Takla kuralı: 08-16 ekibi 00-08'e, 16-24 ekibi 08-16'ya, 00-08 ekibi 16-24'e geçer.
+      const yeniVardiyalar = {
+        gece: onceki.shifts.gunduz,
+        gunduz: onceki.shifts.aksam,
+        aksam: onceki.shifts.gece
+      };
+
+      vardiyalar.forEach((vardiya) => {
+        document.getElementById(`staff-${vardiya.id}`).value = yeniVardiyalar[vardiya.id].staff;
+        document.getElementById(`lead-${vardiya.id}`).value = yeniVardiyalar[vardiya.id].lead;
+      });
+
+      planiGuncelle();
+      kaydet(true);
+      bildirimGoster("Takla tamamlandı. Ekipler yeni vardiyalarına geçti.");
+    }
+
+    function planiGuncelle() {
+      const veri = formVerisiniOku();
+      const gunler = tarihAraligiOlustur(veri.startDate, veri.endDate);
+      const baslangic = isoTarihiOku(veri.startDate);
+      const bitis = isoTarihiOku(veri.endDate);
+
+      elemanlar.warningArea.innerHTML = "";
+
+      if (!veri.startDate || !veri.endDate) {
+        elemanlar.warningArea.innerHTML = '<div class="warning">Plan için başlangıç ve bitiş tarihi seçin.</div>';
+      } else if (baslangic && bitis && bitis < baslangic) {
+        elemanlar.warningArea.innerHTML = '<div class="warning">Başlangıç tarihi, bitiş tarihinden sonra olamaz.</div>';
+      }
+
+      if (gunler.length) {
+        elemanlar.dateRangeText.textContent = `${tarihYaz(gunler[0], {
+          day: "2-digit",
+          month: "long",
+          year: "numeric"
+        })} - ${tarihYaz(gunler[gunler.length - 1], {
+          day: "2-digit",
+          month: "long",
+          year: "numeric"
+        })}`;
+      } else {
+        elemanlar.dateRangeText.textContent = "Geçerli tarih aralığı seçilmedi.";
+      }
+
+      elemanlar.planSummary.textContent = gunler.length
+        ? `${gunler.length} gün / ${gunler.length * 3} vardiya`
+        : "Plan beklemede";
+
+      elemanlar.plannerStats.textContent = gunler.length
+        ? `${gunler.length} gün, ${gunler.length * 3} vardiya`
+        : "0 gün";
+
+      notOnizlemesiniGuncelle(veri.notes);
+      elemanlar.planList.innerHTML = gunler.map((gun, sira) => gunKartiOlustur(gun, sira, veri)).join("");
+    }
+
+    function notOnizlemesiniGuncelle(notMetni) {
+      const temizNot = notMetni.trim();
+      if (!temizNot) {
+        elemanlar.notesPreview.style.display = "none";
+        elemanlar.notesPreview.innerHTML = "";
+        return;
+      }
+
+      elemanlar.notesPreview.style.display = "block";
+      elemanlar.notesPreview.innerHTML = `<strong>Plan notu</strong><div>${guvenliMetin(temizNot).replace(/\n/g, "<br>")}</div>`;
+    }
+
+    function gunKartiOlustur(gun, sira, veri) {
+      const tarihBasligi = tarihYaz(gun, {
+        day: "2-digit",
+        month: "long",
+        year: "numeric"
+      });
+      const gunAdi = tarihYaz(gun, { weekday: "long" });
+      const satirlar = vardiyalar.map((vardiya) => vardiyaSatiriOlustur(vardiya, veri.shifts[vardiya.id])).join("");
+
+      return `
+        <article class="day-card">
+          <div class="day-head">
+            <div>
+              <strong>${guvenliMetin(tarihBasligi)}</strong>
+              <span>${guvenliMetin(gunAdi)}</span>
+            </div>
+            <span class="day-number">${sira + 1}. Gün</span>
+          </div>
+          <div class="day-shifts">${satirlar}</div>
+        </article>
+      `;
+    }
+
+    function vardiyaSatiriOlustur(vardiya, vardiyaVerisi) {
+      const personeller = personelMetniniListeyeCevir(vardiyaVerisi?.staff || "");
+      const sorumlu = vardiyaVerisi?.lead?.trim() || "Sorumlu girilmedi";
+
+      return `
+        <div class="plan-row">
+          <div class="plan-time">${guvenliMetin(vardiya.saat)}</div>
+          <div class="plan-cell">
+            <strong>Vardiya sorumlusu</strong>
+            <p>${guvenliMetin(sorumlu)}</p>
+          </div>
+          <div class="plan-cell">
+            <strong>Personel</strong>
+            <p>${listeyiGorunenMetneCevir(personeller)}</p>
+          </div>
+          <div class="plan-cell">
+            <strong>Mola bilgileri</strong>
+            <p>${guvenliMetin(vardiya.mola)}</p>
+          </div>
+        </div>
+      `;
+    }
+
+    function personeleTiklandi(isim) {
+      const hedef = document.getElementById(`staff-${aktifVardiyaId}`);
+      const mevcutListe = personelMetniniListeyeCevir(hedef.value);
+      if (!mevcutListe.includes(isim)) {
+        mevcutListe.push(isim);
+        hedef.value = mevcutListe.join("\n");
+        hedef.focus();
+        planiGuncelle();
+        otomatikKaydet();
+        bildirimGoster(`${isim} seçili vardiyaya eklendi.`);
+      } else {
+        hedef.focus();
+        bildirimGoster(`${isim} zaten seçili vardiyada var.`);
+      }
+    }
+
+    function aktifVardiyayiAyarla(vardiyaId) {
+      aktifVardiyaId = vardiyaId;
+      const vardiya = vardiyalar.find((item) => item.id === vardiyaId);
+      elemanlar.activeShiftText.textContent = `Seçili vardiya: ${vardiya.saat}`;
+    }
+
+    function htmlIndir() {
+      const veri = formVerisiniOku();
+      veri.savedAt = new Date().toISOString();
+      veri.exportedFile = true;
+
+      const kopya = document.documentElement.cloneNode(true);
+      const exportScript = kopya.querySelector("#exportDataScript");
+      const guvenliJson = JSON.stringify(veri, null, 2).replace(/</g, "\\u003c");
+      exportScript.textContent = `\n    window.__RC_SHIFT_EXPORT__ = ${guvenliJson};\n  `;
+
+      const html = `<!doctype html>\n${kopya.outerHTML}`;
+      const blob = new Blob([html], { type: "text/html;charset=utf-8" });
+      const url = URL.createObjectURL(blob);
+      const baglanti = document.createElement("a");
+      const dosyaTarihi = veri.startDate || bugununIsoTarihi();
+
+      baglanti.href = url;
+      baglanti.download = `rc-endustri-unisign-vardiya-plani-${dosyaTarihi}.html`;
+      document.body.appendChild(baglanti);
+      baglanti.click();
+      baglanti.remove();
+      URL.revokeObjectURL(url);
+      bildirimGoster("HTML dosyası indirildi.");
+    }
+
+    function sifirla() {
+      const onay = confirm("Plan örnek başlangıç verisine sıfırlansın mı?");
+      if (!onay) return;
+
+      formVerisiniYaz(ornekVeriOlustur());
+      kaydet(true);
+      bildirimGoster("Plan örnek veriye sıfırlandı.");
+    }
+
+    function bildirimGoster(mesaj, hataMi = false) {
+      clearTimeout(toastZamani);
+      elemanlar.toast.textContent = mesaj;
+      elemanlar.toast.style.borderColor = hataMi ? "#f0b6b2" : "#b8d8c5";
+      elemanlar.toast.style.background = hataMi ? "#fff7f6" : "#f3fff7";
+      elemanlar.toast.style.color = hataMi ? "var(--hata)" : "var(--basari)";
+      elemanlar.toast.classList.add("is-visible");
+
+      toastZamani = setTimeout(() => {
+        elemanlar.toast.classList.remove("is-visible");
+      }, 2700);
+    }
+
+    function olaylariBagla() {
+      document.addEventListener("input", (event) => {
+        const hedef = event.target;
+        if (hedef.matches("input, textarea")) {
+          planiGuncelle();
+          otomatikKaydet();
+        }
+      });
+
+      document.addEventListener("focusin", (event) => {
+        const hedef = event.target;
+        if (hedef.dataset.staff) {
+          aktifVardiyayiAyarla(hedef.dataset.staff);
+        }
+      });
+
+      elemanlar.peopleList.addEventListener("click", (event) => {
+        const dugme = event.target.closest("[data-name]");
+        if (!dugme) return;
+        personeleTiklandi(dugme.dataset.name);
+      });
+
+      elemanlar.rotateButton.addEventListener("click", taklaAttir);
+      elemanlar.saveButton.addEventListener("click", () => kaydet(false));
+      elemanlar.loadButton.addEventListener("click", kaydiYukle);
+      elemanlar.printButton.addEventListener("click", () => window.print());
+      elemanlar.downloadButton.addEventListener("click", htmlIndir);
+      elemanlar.resetButton.addEventListener("click", sifirla);
+    }
+
+    function baslangicVerisiniSec() {
+      const exportVerisi = window.__RC_SHIFT_EXPORT__;
+      if (exportVerisi?.exportedFile) return exportVerisi;
+
+      const kayit = kayitOku();
+      if (kayit) return kayit;
+
+      return ornekVeriOlustur();
+    }
+
+    function uygulamayiBaslat() {
+      elemanlariHazirla();
+      arayuzuKur();
+      olaylariBagla();
+
+      const veri = baslangicVerisiniSec();
+      formVerisiniYaz(veri);
+      kayitDurumunuYaz(veri.savedAt);
+      aktifVardiyayiAyarla(aktifVardiyaId);
+    }
+
+    document.addEventListener("DOMContentLoaded", uygulamayiBaslat);
+  </script>
+</body>
+</html>
